@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "blender-translator"
+version = "2026.10.28.1"
+description = "Render studies of build123d-translator parts -> headless Blender (Cycles) scenes and checked images; CLI, API and MCP server"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Nicola Ferralis", email = "ferralis@generalflash.com" }]
+license = { text = "MIT" }
+dependencies = ["numpy>=1.22", "pillow>=9"]
+
+[project.optional-dependencies]
+mcp = ["mcp>=1.2"]
+test = ["pytest>=7"]
+
+[project.scripts]
+blnt = "blender_translator.cli:main"
+blnt-mcp = "blender_translator.mcp_server:main"
+
+[tool.setuptools]
+packages = ["blender_translator"]
+
+[tool.setuptools.package-data]
+blender_translator = ["scene_template.py"]
